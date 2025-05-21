@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 특정 Repository interface와 연결 설정 -->
+<mapper namespace="com.haemin.spring.ex.database.repository.UsedGoodsRepository">
+	
+	<!-- 연결된 Repository 의 특정 메소드에 대한 구현 (query) -->
+	<select id="selectUsedGoodsList"
+		resultType="com.haemin.spring.ex.database.domain.UsedGoods">
+		SELECT
+		`id`
+		, `sellerId`
+		, `title`
+		, `price`
+		, `description`
+		, `image`
+		, `createdAt`
+		, `updatedAt`
+		FROM
+		`used_goods`;
+	</select>
+
+</mapper>
