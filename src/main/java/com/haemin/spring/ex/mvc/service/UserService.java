@@ -15,7 +15,15 @@ public class UserService {
 	// 가장 최근에 등록한 사용자 정보 얻어오기
 	public User getLastUser() {
 		User user = userRepository.selectLastUser();
+		
 		return user;
+	}
+	
+	public int addUser(User user) {
+		
+		int count = userRepository.insertUser(user);
+		return count;
+		
 	}
 
 }

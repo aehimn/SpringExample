@@ -22,4 +22,26 @@
  		LIMIT
  			1
  	</select>
+ 	
+ 	<insert id="insertUser" useGeneratedKeys="true" keyProperty="id"
+ 	parameterType="com.haemin.spring.ex.mvc.domain.User">
+ 		INSERT INTO
+ 			`new_user`
+ 		(
+ 			`name`
+ 			, `yyyymmdd`
+ 			, `email`
+ 			, `introduce`
+ 		)
+ 		VALUE
+ 		(
+ 			#{name}
+ 			, #{yyyymmdd}
+ 			, #{email}
+ 			, #{introduce}
+ 		)
+ 		
+ 		
+ 	</insert>
+ 	
  </mapper>
