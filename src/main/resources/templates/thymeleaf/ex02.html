@@ -14,9 +14,42 @@
 	
 	<h3>2. 문자열 리스트</h3>
 	<!-- for(String fruit:fruitList) -->
-	<div th:each="fruit:${fruitList}">
+	<div th:each="fruit, status:${fruitList}">
 		<span th:text="${fruit}"></span>
+		<span th:text="|${status.index} ${status.count}|"></span>
 	</div>
+	
+	<h3>3. 맵리스트</h3>
+	
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>나이</th>
+				<th>취미</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="user, status:${userList}">
+				<td th:text="${user.name}">유재석</td>
+				<td th:text="${user.age}">34</td>
+				<td th:text="${user.hobby}">진행하기</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </body>
 </html>
