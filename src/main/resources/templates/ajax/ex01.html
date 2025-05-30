@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax</title>
+</head>
+<body>
+
+	<h2>AJAX 테스트</h2>
+	
+	<label>이름</label><input type="text" id="nameInput">
+	<label>생년월일</label><input type="text" id="birthdayInput">
+	<button type="button" id="inputBtn">입력</button>
+	
+	<!-- 입력한 이름과 생년월일을 서버에 전달해서 이름과 나이를 얻어와 새로고침 없이 표시한다 -->
+	
+	<div>이름 : <span id="nameSpan"></span></div>
+	<div>나이 : <span id="ageSpan"></span></div>
+	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		$("#inputBtn").on("click", function() {
+			let name = $("#nameInput").val();
+			let birthday = $("#birthdayInput").val();
+			
+			$.ajax({
+				type:"get"
+				, url:"/ajax/person"
+				, data:{"name":name, "birthday":birthday}
+				, success:function(response) {
+					// 응답이 정상적으로 전달되었을때 수행할 기능
+					// 해당 함수의 파라미터를 통해 response body 데이터를 전달 받는다.
+					// json 문자열
+					// {"name":"김인규:, "age":32}
+					// response body 에 담긴 json 문자열을 javascript에서 손쉽게 사용하도록
+					// json문자열을 javascript 객체로 변환해준다.
+					// alert(response.name + " " + response.age);
+					
+					$("#nameSpan").text(response.name);
+					$("#ageSpan").text(response.age);
+				}
+			});
+			
+		});
+	</script>
+
+</body>
+</html>
