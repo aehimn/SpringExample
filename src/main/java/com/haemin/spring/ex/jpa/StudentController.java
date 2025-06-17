@@ -58,8 +58,12 @@ public class StudentController {
 		List<Student> studentList = null;
 		// 모든 학생 정보 조회
 //		studentList = studentRepository.findAll();
+		
 //		studentList = studentRepository.findAllByOrderByIdDesc();
-		studentList = studentRepository.findTop2ByOrderByIdDesc();
+//		studentList = studentRepository.findTop2ByOrderByIdDesc();
+		studentList = studentRepository.findByName("김인규");
+		
+		studentList = studentRepository.selectByQuery("개발자");
 		return studentList;
 	}
 	
